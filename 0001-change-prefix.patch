@@ -1,0 +1,1121 @@
+From 953d9e2fae1583568967138fb288e1d8115c6cf8 Mon Sep 17 00:00:00 2001
+From: kxxt <rsworktech@outlook.com>
+Date: Sat, 19 Aug 2023 17:23:22 +0800
+Subject: [PATCH] change prefix
+
+---
+ build.sh                                                      | 3 +++
+ scripts/libmakepkg/autodep.sh.in                              | 2 +-
+ scripts/libmakepkg/autodep/library_depends.sh.in              | 2 +-
+ scripts/libmakepkg/autodep/library_provides.sh.in             | 2 +-
+ scripts/libmakepkg/buildenv.sh.in                             | 2 +-
+ scripts/libmakepkg/buildenv/buildflags.sh.in                  | 2 +-
+ scripts/libmakepkg/buildenv/compiler.sh.in                    | 2 +-
+ scripts/libmakepkg/buildenv/debugflags.sh.in                  | 2 +-
+ scripts/libmakepkg/buildenv/lto.sh.in                         | 2 +-
+ scripts/libmakepkg/buildenv/makeflags.sh.in                   | 2 +-
+ scripts/libmakepkg/buildenv/rust.sh.in                        | 2 +-
+ scripts/libmakepkg/executable.sh.in                           | 2 +-
+ scripts/libmakepkg/executable/ccache.sh.in                    | 2 +-
+ scripts/libmakepkg/executable/checksum.sh.in                  | 2 +-
+ scripts/libmakepkg/executable/debugedit.sh.in                 | 2 +-
+ scripts/libmakepkg/executable/distcc.sh.in                    | 2 +-
+ scripts/libmakepkg/executable/fakeroot.sh.in                  | 2 +-
+ scripts/libmakepkg/executable/gpg.sh.in                       | 2 +-
+ scripts/libmakepkg/executable/gzip.sh.in                      | 2 +-
+ scripts/libmakepkg/executable/pacman.sh.in                    | 2 +-
+ scripts/libmakepkg/executable/strip.sh.in                     | 2 +-
+ scripts/libmakepkg/executable/sudo.sh.in                      | 2 +-
+ scripts/libmakepkg/executable/vcs.sh.in                       | 2 +-
+ scripts/libmakepkg/integrity.sh.in                            | 2 +-
+ scripts/libmakepkg/integrity/generate_checksum.sh.in          | 2 +-
+ scripts/libmakepkg/integrity/generate_signature.sh.in         | 2 +-
+ scripts/libmakepkg/integrity/verify_checksum.sh.in            | 2 +-
+ scripts/libmakepkg/integrity/verify_signature.sh.in           | 2 +-
+ scripts/libmakepkg/lint_config.sh.in                          | 4 ++--
+ scripts/libmakepkg/lint_config/ext.sh.in                      | 2 +-
+ scripts/libmakepkg/lint_config/paths.sh.in                    | 2 +-
+ scripts/libmakepkg/lint_config/source_date_epoch.sh.in        | 2 +-
+ scripts/libmakepkg/lint_config/variable.sh.in                 | 2 +-
+ scripts/libmakepkg/lint_package.sh.in                         | 2 +-
+ scripts/libmakepkg/lint_package/build_references.sh.in        | 2 +-
+ scripts/libmakepkg/lint_package/dotfiles.sh.in                | 2 +-
+ scripts/libmakepkg/lint_package/file_names.sh.in              | 2 +-
+ scripts/libmakepkg/lint_package/missing_backup.sh.in          | 2 +-
+ scripts/libmakepkg/lint_pkgbuild.sh.in                        | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/arch.sh.in                   | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/arch_specific.sh.in          | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/backup.sh.in                 | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/changelog.sh.in              | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/checkdepends.sh.in           | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/conflicts.sh.in              | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/depends.sh.in                | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/epoch.sh.in                  | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/fullpkgver.sh.in             | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/install.sh.in                | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/makedepends.sh.in            | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/optdepends.sh.in             | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/options.sh.in                | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/package_function.sh.in       | 2 +-
+ .../libmakepkg/lint_pkgbuild/package_function_variable.sh.in  | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/pkgbase.sh.in                | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/pkglist.sh.in                | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/pkgname.sh.in                | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/pkgrel.sh.in                 | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/pkgver.sh.in                 | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/provides.sh.in               | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/source.sh.in                 | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/util.sh.in                   | 2 +-
+ scripts/libmakepkg/lint_pkgbuild/variable.sh.in               | 2 +-
+ scripts/libmakepkg/reproducible.sh.in                         | 2 +-
+ scripts/libmakepkg/reproducible/python.sh.in                  | 2 +-
+ scripts/libmakepkg/source.sh.in                               | 2 +-
+ scripts/libmakepkg/source/bzr.sh.in                           | 2 +-
+ scripts/libmakepkg/source/file.sh.in                          | 2 +-
+ scripts/libmakepkg/source/fossil.sh.in                        | 2 +-
+ scripts/libmakepkg/source/git.sh.in                           | 2 +-
+ scripts/libmakepkg/source/hg.sh.in                            | 2 +-
+ scripts/libmakepkg/source/local.sh.in                         | 2 +-
+ scripts/libmakepkg/source/svn.sh.in                           | 2 +-
+ scripts/libmakepkg/srcinfo.sh.in                              | 2 +-
+ scripts/libmakepkg/tidy.sh.in                                 | 2 +-
+ scripts/libmakepkg/tidy/docs.sh.in                            | 2 +-
+ scripts/libmakepkg/tidy/emptydirs.sh.in                       | 2 +-
+ scripts/libmakepkg/tidy/libtool.sh.in                         | 2 +-
+ scripts/libmakepkg/tidy/purge.sh.in                           | 2 +-
+ scripts/libmakepkg/tidy/staticlibs.sh.in                      | 2 +-
+ scripts/libmakepkg/tidy/strip.sh.in                           | 2 +-
+ scripts/libmakepkg/tidy/zipman.sh.in                          | 2 +-
+ scripts/libmakepkg/util.sh.in                                 | 2 +-
+ scripts/libmakepkg/util/compress.sh.in                        | 2 +-
+ scripts/libmakepkg/util/config.sh.in                          | 2 +-
+ scripts/libmakepkg/util/dirsize.sh.in                         | 2 +-
+ scripts/libmakepkg/util/error.sh.in                           | 2 +-
+ scripts/libmakepkg/util/message.sh.in                         | 2 +-
+ scripts/libmakepkg/util/option.sh.in                          | 2 +-
+ scripts/libmakepkg/util/parseopts.sh.in                       | 2 +-
+ scripts/libmakepkg/util/pkgbuild.sh.in                        | 2 +-
+ scripts/libmakepkg/util/schema.sh.in                          | 2 +-
+ scripts/libmakepkg/util/source.sh.in                          | 2 +-
+ scripts/libmakepkg/util/util.sh.in                            | 2 +-
+ scripts/makepkg-template.pl.in                                | 2 +-
+ scripts/makepkg.sh.in                                         | 2 +-
+ scripts/pacman-db-upgrade.sh.in                               | 2 +-
+ scripts/pacman-key.sh.in                                      | 2 +-
+ scripts/repo-add.sh.in                                        | 2 +-
+ scripts/wrapper.sh.in                                         | 2 +-
+ 100 files changed, 103 insertions(+), 100 deletions(-)
+ create mode 100644 build.sh
+
+diff --git a/build.sh b/build.sh
+new file mode 100644
+index 00000000..2641674c
+--- /dev/null
++++ b/build.sh
+@@ -0,0 +1,3 @@
++export PKG_CONFIG_PATH=$(realpath ./zlib-1.2.13/install/lib/pkgconfig)
++export LIBRARY_PATH=$(realpath ./zlib-1.2.13/install/lib)
++meson . build -Droot-dir=/data/ -Dscriptlet-shell=/system/bin/sh --prefix=/data/usr -Dbuildstatic=true 
+\ No newline at end of file
+diff --git a/scripts/libmakepkg/autodep.sh.in b/scripts/libmakepkg/autodep.sh.in
+index 1e25891e..556b87fe 100644
+--- a/scripts/libmakepkg/autodep.sh.in
++++ b/scripts/libmakepkg/autodep.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   autodep.sh - functions for automatically adding depends/provides
+ #
+diff --git a/scripts/libmakepkg/autodep/library_depends.sh.in b/scripts/libmakepkg/autodep/library_depends.sh.in
+index ef493752..351d39d6 100644
+--- a/scripts/libmakepkg/autodep/library_depends.sh.in
++++ b/scripts/libmakepkg/autodep/library_depends.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   library_depends.sh - Automatically add library requirements to depends
+ #
+diff --git a/scripts/libmakepkg/autodep/library_provides.sh.in b/scripts/libmakepkg/autodep/library_provides.sh.in
+index cda61c3c..c19cd4ef 100644
+--- a/scripts/libmakepkg/autodep/library_provides.sh.in
++++ b/scripts/libmakepkg/autodep/library_provides.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   library_provides.sh - Automatically add a packages libraries to provides
+ #
+diff --git a/scripts/libmakepkg/buildenv.sh.in b/scripts/libmakepkg/buildenv.sh.in
+index ff0832a6..f334b6cd 100644
+--- a/scripts/libmakepkg/buildenv.sh.in
++++ b/scripts/libmakepkg/buildenv.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   buildenv.sh - functions for altering the build environment before
+ #   compilation
+diff --git a/scripts/libmakepkg/buildenv/buildflags.sh.in b/scripts/libmakepkg/buildenv/buildflags.sh.in
+index 163f0206..ca2d69b7 100644
+--- a/scripts/libmakepkg/buildenv/buildflags.sh.in
++++ b/scripts/libmakepkg/buildenv/buildflags.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   buildflags.sh - Clear user-specified buildflags if requested
+ #
+diff --git a/scripts/libmakepkg/buildenv/compiler.sh.in b/scripts/libmakepkg/buildenv/compiler.sh.in
+index 4b7ab491..2e00e6a6 100644
+--- a/scripts/libmakepkg/buildenv/compiler.sh.in
++++ b/scripts/libmakepkg/buildenv/compiler.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   compiler.sh - CCache and DistCC compilation
+ #   ccache - Cache compilations and reuse them to save time on repetitions
+diff --git a/scripts/libmakepkg/buildenv/debugflags.sh.in b/scripts/libmakepkg/buildenv/debugflags.sh.in
+index fefba936..e56dbbbd 100644
+--- a/scripts/libmakepkg/buildenv/debugflags.sh.in
++++ b/scripts/libmakepkg/buildenv/debugflags.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   debugflags.sh - Specify flags for building a package with debugging
+ #   symbols
+diff --git a/scripts/libmakepkg/buildenv/lto.sh.in b/scripts/libmakepkg/buildenv/lto.sh.in
+index 6492def7..58d4f653 100644
+--- a/scripts/libmakepkg/buildenv/lto.sh.in
++++ b/scripts/libmakepkg/buildenv/lto.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   lto.sh - Specify flags for building a package with link-time
+ #            optimisation
+diff --git a/scripts/libmakepkg/buildenv/makeflags.sh.in b/scripts/libmakepkg/buildenv/makeflags.sh.in
+index 75188bb4..17d4666a 100644
+--- a/scripts/libmakepkg/buildenv/makeflags.sh.in
++++ b/scripts/libmakepkg/buildenv/makeflags.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   makeflags.sh - Clear user-specified makeflags if requested
+ #
+diff --git a/scripts/libmakepkg/buildenv/rust.sh.in b/scripts/libmakepkg/buildenv/rust.sh.in
+index 917a2ac6..5ea9db9f 100644
+--- a/scripts/libmakepkg/buildenv/rust.sh.in
++++ b/scripts/libmakepkg/buildenv/rust.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   rust.sh - Specify flags for building a package with rust
+ #
+diff --git a/scripts/libmakepkg/executable.sh.in b/scripts/libmakepkg/executable.sh.in
+index ecdd3fc1..d6a675a0 100644
+--- a/scripts/libmakepkg/executable.sh.in
++++ b/scripts/libmakepkg/executable.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   executable.sh - confirm presence of dependent executables
+ #
+diff --git a/scripts/libmakepkg/executable/ccache.sh.in b/scripts/libmakepkg/executable/ccache.sh.in
+index a7fb1c07..9612cbaa 100644
+--- a/scripts/libmakepkg/executable/ccache.sh.in
++++ b/scripts/libmakepkg/executable/ccache.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   ccache.sh - Confirm presence of ccache binary
+ #
+diff --git a/scripts/libmakepkg/executable/checksum.sh.in b/scripts/libmakepkg/executable/checksum.sh.in
+index 2f42b36f..137daa76 100644
+--- a/scripts/libmakepkg/executable/checksum.sh.in
++++ b/scripts/libmakepkg/executable/checksum.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   checksum.sh - Confirm presence of binaries for checksum operations
+ #
+diff --git a/scripts/libmakepkg/executable/debugedit.sh.in b/scripts/libmakepkg/executable/debugedit.sh.in
+index 55b9257a..17b871b0 100644
+--- a/scripts/libmakepkg/executable/debugedit.sh.in
++++ b/scripts/libmakepkg/executable/debugedit.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   debugedit.sh - Confirm presence of debugedit binary
+ #
+diff --git a/scripts/libmakepkg/executable/distcc.sh.in b/scripts/libmakepkg/executable/distcc.sh.in
+index f6aea7ad..f03d93fc 100644
+--- a/scripts/libmakepkg/executable/distcc.sh.in
++++ b/scripts/libmakepkg/executable/distcc.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   distcc.sh - Confirm presence of distcc binary
+ #
+diff --git a/scripts/libmakepkg/executable/fakeroot.sh.in b/scripts/libmakepkg/executable/fakeroot.sh.in
+index 11bb213c..357288bd 100644
+--- a/scripts/libmakepkg/executable/fakeroot.sh.in
++++ b/scripts/libmakepkg/executable/fakeroot.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   fakeroot.sh - Confirm presence of fakeroot binary
+ #
+diff --git a/scripts/libmakepkg/executable/gpg.sh.in b/scripts/libmakepkg/executable/gpg.sh.in
+index 8703a731..57309632 100644
+--- a/scripts/libmakepkg/executable/gpg.sh.in
++++ b/scripts/libmakepkg/executable/gpg.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   gpg.sh - Confirm presence of gpg binary
+ #
+diff --git a/scripts/libmakepkg/executable/gzip.sh.in b/scripts/libmakepkg/executable/gzip.sh.in
+index 686eb00f..1e78a80c 100644
+--- a/scripts/libmakepkg/executable/gzip.sh.in
++++ b/scripts/libmakepkg/executable/gzip.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   gzip.sh - Confirm presence of gzip binary
+ #
+diff --git a/scripts/libmakepkg/executable/pacman.sh.in b/scripts/libmakepkg/executable/pacman.sh.in
+index f8543640..1fd6a8d8 100644
+--- a/scripts/libmakepkg/executable/pacman.sh.in
++++ b/scripts/libmakepkg/executable/pacman.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   pacman.sh - Confirm presence of pacman binary
+ #
+diff --git a/scripts/libmakepkg/executable/strip.sh.in b/scripts/libmakepkg/executable/strip.sh.in
+index 9f749201..4f53e430 100644
+--- a/scripts/libmakepkg/executable/strip.sh.in
++++ b/scripts/libmakepkg/executable/strip.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   strip.sh - Confirm presence of strip binary
+ #
+diff --git a/scripts/libmakepkg/executable/sudo.sh.in b/scripts/libmakepkg/executable/sudo.sh.in
+index 23929454..2dfe6704 100644
+--- a/scripts/libmakepkg/executable/sudo.sh.in
++++ b/scripts/libmakepkg/executable/sudo.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   sudo.sh - Confirm presence of sudo binary
+ #
+diff --git a/scripts/libmakepkg/executable/vcs.sh.in b/scripts/libmakepkg/executable/vcs.sh.in
+index 743d8637..0b91a3d7 100644
+--- a/scripts/libmakepkg/executable/vcs.sh.in
++++ b/scripts/libmakepkg/executable/vcs.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   vcs.sh - Confirm presence of binaries for VCS operations
+ #
+diff --git a/scripts/libmakepkg/integrity.sh.in b/scripts/libmakepkg/integrity.sh.in
+index 070392fa..979cf3fe 100644
+--- a/scripts/libmakepkg/integrity.sh.in
++++ b/scripts/libmakepkg/integrity.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   integrity.sh - functions relating to source integrity checking
+ #
+diff --git a/scripts/libmakepkg/integrity/generate_checksum.sh.in b/scripts/libmakepkg/integrity/generate_checksum.sh.in
+index 3c557acb..38b7ca0f 100644
+--- a/scripts/libmakepkg/integrity/generate_checksum.sh.in
++++ b/scripts/libmakepkg/integrity/generate_checksum.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   generate_checksum.sh - functions for generating source checksums
+ #
+diff --git a/scripts/libmakepkg/integrity/generate_signature.sh.in b/scripts/libmakepkg/integrity/generate_signature.sh.in
+index 8aeed8fe..16200434 100644
+--- a/scripts/libmakepkg/integrity/generate_signature.sh.in
++++ b/scripts/libmakepkg/integrity/generate_signature.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   generate_signature.sh - functions for generating PGP signatures
+ #
+diff --git a/scripts/libmakepkg/integrity/verify_checksum.sh.in b/scripts/libmakepkg/integrity/verify_checksum.sh.in
+index 7cb98e39..5985d758 100644
+--- a/scripts/libmakepkg/integrity/verify_checksum.sh.in
++++ b/scripts/libmakepkg/integrity/verify_checksum.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   verify_checksum.sh - functions for checking source checksums
+ #
+diff --git a/scripts/libmakepkg/integrity/verify_signature.sh.in b/scripts/libmakepkg/integrity/verify_signature.sh.in
+index ad5bb66d..b262e750 100644
+--- a/scripts/libmakepkg/integrity/verify_signature.sh.in
++++ b/scripts/libmakepkg/integrity/verify_signature.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   verify_signature.sh - functions for checking PGP signatures
+ #
+diff --git a/scripts/libmakepkg/lint_config.sh.in b/scripts/libmakepkg/lint_config.sh.in
+index 3d612ee5..d1e2ab93 100644
+--- a/scripts/libmakepkg/lint_config.sh.in
++++ b/scripts/libmakepkg/lint_config.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   lint_config.sh - functions for checking for makepkg.conf errors
+ #
+@@ -21,7 +21,7 @@
+ [[ -n "$LIBMAKEPKG_LINT_CONFIG_SH" ]] && return
+ LIBMAKEPKG_LINT_CONFIG_SH=1
+ 
+-LIBRARY=${LIBRARY:-'/usr/share/makepkg'}
++LIBRARY=${LIBRARY:-'/data/usr/share/makepkg'}
+ 
+ source "$LIBRARY/util/message.sh"
+ source "$LIBRARY/util/util.sh"
+diff --git a/scripts/libmakepkg/lint_config/ext.sh.in b/scripts/libmakepkg/lint_config/ext.sh.in
+index b927f0d7..3f2054f6 100644
+--- a/scripts/libmakepkg/lint_config/ext.sh.in
++++ b/scripts/libmakepkg/lint_config/ext.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   ext.sh - Check that source/package extensions have valid prefixes
+ #
+diff --git a/scripts/libmakepkg/lint_config/paths.sh.in b/scripts/libmakepkg/lint_config/paths.sh.in
+index f6c97b0e..8340be55 100644
+--- a/scripts/libmakepkg/lint_config/paths.sh.in
++++ b/scripts/libmakepkg/lint_config/paths.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   paths.sh - Check that pathname components do not contain odd characters
+ #
+diff --git a/scripts/libmakepkg/lint_config/source_date_epoch.sh.in b/scripts/libmakepkg/lint_config/source_date_epoch.sh.in
+index b05b0911..509aca59 100755
+--- a/scripts/libmakepkg/lint_config/source_date_epoch.sh.in
++++ b/scripts/libmakepkg/lint_config/source_date_epoch.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   source_date_epoch.sh - Check that reproducible builds timestamp is valid
+ #
+diff --git a/scripts/libmakepkg/lint_config/variable.sh.in b/scripts/libmakepkg/lint_config/variable.sh.in
+index cda34b11..f9f2279a 100644
+--- a/scripts/libmakepkg/lint_config/variable.sh.in
++++ b/scripts/libmakepkg/lint_config/variable.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   variable.sh - Check that variables are or are not arrays as appropriate
+ #
+diff --git a/scripts/libmakepkg/lint_package.sh.in b/scripts/libmakepkg/lint_package.sh.in
+index 891c47c1..1dd57fe2 100644
+--- a/scripts/libmakepkg/lint_package.sh.in
++++ b/scripts/libmakepkg/lint_package.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   lint_package.sh - functions for checking for packaging errors
+ #
+diff --git a/scripts/libmakepkg/lint_package/build_references.sh.in b/scripts/libmakepkg/lint_package/build_references.sh.in
+index 52cf5ae7..d02d5469 100644
+--- a/scripts/libmakepkg/lint_package/build_references.sh.in
++++ b/scripts/libmakepkg/lint_package/build_references.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   build_references.sh - Warn about files containing references to build directories
+ #
+diff --git a/scripts/libmakepkg/lint_package/dotfiles.sh.in b/scripts/libmakepkg/lint_package/dotfiles.sh.in
+index 0b993dd4..785f1221 100644
+--- a/scripts/libmakepkg/lint_package/dotfiles.sh.in
++++ b/scripts/libmakepkg/lint_package/dotfiles.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   dotfiles.sh - check for dotfiles in the package root
+ #
+diff --git a/scripts/libmakepkg/lint_package/file_names.sh.in b/scripts/libmakepkg/lint_package/file_names.sh.in
+index adb4b729..7a5c9fe5 100644
+--- a/scripts/libmakepkg/lint_package/file_names.sh.in
++++ b/scripts/libmakepkg/lint_package/file_names.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   file_names.sh - check package file names
+ #
+diff --git a/scripts/libmakepkg/lint_package/missing_backup.sh.in b/scripts/libmakepkg/lint_package/missing_backup.sh.in
+index 8b194c9d..3ff85fd4 100644
+--- a/scripts/libmakepkg/lint_package/missing_backup.sh.in
++++ b/scripts/libmakepkg/lint_package/missing_backup.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   missing_backup.sh - Warn about missing files in the backup array
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild.sh.in b/scripts/libmakepkg/lint_pkgbuild.sh.in
+index bd7d29f9..0c9fbcaa 100644
+--- a/scripts/libmakepkg/lint_pkgbuild.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   lint_pkgbuild.sh - functions for detecting PKGBUILD errors
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/arch.sh.in b/scripts/libmakepkg/lint_pkgbuild/arch.sh.in
+index e7fc90e6..0dabf074 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/arch.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/arch.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   arch.sh - Check the 'arch' array conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/arch_specific.sh.in b/scripts/libmakepkg/lint_pkgbuild/arch_specific.sh.in
+index 357d4777..5db8bdcc 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/arch_specific.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/arch_specific.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   arch_specific.sh - Check that arch specific variables can be arch specific.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/backup.sh.in b/scripts/libmakepkg/lint_pkgbuild/backup.sh.in
+index 062a9a69..01d9732a 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/backup.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/backup.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   backup.sh - Check the 'backup' array conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/changelog.sh.in b/scripts/libmakepkg/lint_pkgbuild/changelog.sh.in
+index 6eddc443..93dd312e 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/changelog.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/changelog.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   changelog.sh - Check the files in the 'changelog' array exist.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/checkdepends.sh.in b/scripts/libmakepkg/lint_pkgbuild/checkdepends.sh.in
+index af7ccf5b..e4f7b4e7 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/checkdepends.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/checkdepends.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   checkdepends.sh - Check the 'checkdepends' array conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/conflicts.sh.in b/scripts/libmakepkg/lint_pkgbuild/conflicts.sh.in
+index d4a971a4..d8b96821 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/conflicts.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/conflicts.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   conflicts.sh - Check the 'conflicts' array conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/depends.sh.in b/scripts/libmakepkg/lint_pkgbuild/depends.sh.in
+index 8330f5c4..4d33842c 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/depends.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/depends.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   depends.sh - Check the 'depends' array conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/epoch.sh.in b/scripts/libmakepkg/lint_pkgbuild/epoch.sh.in
+index 5fe4b92c..46a97df9 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/epoch.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/epoch.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   epoch.sh - Check the 'epoch' variable conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/fullpkgver.sh.in b/scripts/libmakepkg/lint_pkgbuild/fullpkgver.sh.in
+index 9d1e50ea..a3a38334 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/fullpkgver.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/fullpkgver.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   fullpkgver.sh - Check whether a full version conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/install.sh.in b/scripts/libmakepkg/lint_pkgbuild/install.sh.in
+index d70d24d8..e0a2f8eb 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/install.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/install.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   install.sh - Check the files in the 'install' array exist.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/makedepends.sh.in b/scripts/libmakepkg/lint_pkgbuild/makedepends.sh.in
+index d9248e6c..de1be2a6 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/makedepends.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/makedepends.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   makedepends.sh - Check the 'makedepends' array conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/optdepends.sh.in b/scripts/libmakepkg/lint_pkgbuild/optdepends.sh.in
+index 560e2de8..9c21b9f8 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/optdepends.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/optdepends.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   optdepends.sh - Check the 'optdepends' array conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/options.sh.in b/scripts/libmakepkg/lint_pkgbuild/options.sh.in
+index d404e9a8..d42fea4b 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/options.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/options.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   options.sh - Check the 'options' array conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/package_function.sh.in b/scripts/libmakepkg/lint_pkgbuild/package_function.sh.in
+index f5579761..68c88b23 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/package_function.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/package_function.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   package_function.sh - Check that required package functions exist.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/package_function_variable.sh.in b/scripts/libmakepkg/lint_pkgbuild/package_function_variable.sh.in
+index b67ae4c6..8a4aaea4 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/package_function_variable.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/package_function_variable.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   package_function_variable.sh - Check variables inside the package function.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/pkgbase.sh.in b/scripts/libmakepkg/lint_pkgbuild/pkgbase.sh.in
+index e6ac301c..224f7d64 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/pkgbase.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/pkgbase.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   pkgbase.sh - Check the 'pkgbase' variable conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/pkglist.sh.in b/scripts/libmakepkg/lint_pkgbuild/pkglist.sh.in
+index 852ae808..f7b3901a 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/pkglist.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/pkglist.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   pkglist.sh - Check the packages selected to build exist.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/pkgname.sh.in b/scripts/libmakepkg/lint_pkgbuild/pkgname.sh.in
+index 7a48c909..2dea6f08 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/pkgname.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/pkgname.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   pkgname.sh - Check the 'pkgname' variable conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/pkgrel.sh.in b/scripts/libmakepkg/lint_pkgbuild/pkgrel.sh.in
+index c83d310d..9e3f3f63 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/pkgrel.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/pkgrel.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   pkgrel.sh - Check the 'pkgrel' variable conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/pkgver.sh.in b/scripts/libmakepkg/lint_pkgbuild/pkgver.sh.in
+index 89125f60..d21543f3 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/pkgver.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/pkgver.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   pkgver.sh - Check the 'pkgver' variable conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/provides.sh.in b/scripts/libmakepkg/lint_pkgbuild/provides.sh.in
+index 6cf1ea19..a910c0e1 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/provides.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/provides.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   provides.sh - Check the 'provides' array conforms to requirements.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/source.sh.in b/scripts/libmakepkg/lint_pkgbuild/source.sh.in
+index ab931c35..39ef562e 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/source.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/source.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   source.sh - Check the 'source' array is not sparse.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/util.sh.in b/scripts/libmakepkg/lint_pkgbuild/util.sh.in
+index 21fbaaf2..f4bd8c11 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/util.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/util.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   util.sh - utility functions for pkgbuild linting.
+ #
+diff --git a/scripts/libmakepkg/lint_pkgbuild/variable.sh.in b/scripts/libmakepkg/lint_pkgbuild/variable.sh.in
+index dde9296c..755e7b5a 100644
+--- a/scripts/libmakepkg/lint_pkgbuild/variable.sh.in
++++ b/scripts/libmakepkg/lint_pkgbuild/variable.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   variable.sh - Check that variables are or are not arrays as appropriate
+ #
+diff --git a/scripts/libmakepkg/reproducible.sh.in b/scripts/libmakepkg/reproducible.sh.in
+index 2711a338..0759bda7 100644
+--- a/scripts/libmakepkg/reproducible.sh.in
++++ b/scripts/libmakepkg/reproducible.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   reproducible.sh - utilities for improving package reproducibility
+ #
+diff --git a/scripts/libmakepkg/reproducible/python.sh.in b/scripts/libmakepkg/reproducible/python.sh.in
+index 95a7ba0f..0a779482 100644
+--- a/scripts/libmakepkg/reproducible/python.sh.in
++++ b/scripts/libmakepkg/reproducible/python.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   python.sh - creating reproducible python packages
+ #
+diff --git a/scripts/libmakepkg/source.sh.in b/scripts/libmakepkg/source.sh.in
+index e39dd16c..18d113d7 100644
+--- a/scripts/libmakepkg/source.sh.in
++++ b/scripts/libmakepkg/source.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   source.sh - functions for downloading and extracting sources
+ #
+diff --git a/scripts/libmakepkg/source/bzr.sh.in b/scripts/libmakepkg/source/bzr.sh.in
+index a7f24e4a..d4f7e60b 100644
+--- a/scripts/libmakepkg/source/bzr.sh.in
++++ b/scripts/libmakepkg/source/bzr.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   bzr.sh - function for handling the download and "extraction" of Bazaar sources
+ #
+diff --git a/scripts/libmakepkg/source/file.sh.in b/scripts/libmakepkg/source/file.sh.in
+index 10e0026e..bd10c7b3 100644
+--- a/scripts/libmakepkg/source/file.sh.in
++++ b/scripts/libmakepkg/source/file.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   file.sh - function for handling the download and extraction of source files
+ #
+diff --git a/scripts/libmakepkg/source/fossil.sh.in b/scripts/libmakepkg/source/fossil.sh.in
+index 86e5eef5..5be6c3ca 100644
+--- a/scripts/libmakepkg/source/fossil.sh.in
++++ b/scripts/libmakepkg/source/fossil.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   fossil.sh - function for handling the download and extraction of Fossil sources
+ #
+diff --git a/scripts/libmakepkg/source/git.sh.in b/scripts/libmakepkg/source/git.sh.in
+index 9bb337e2..66d7e274 100644
+--- a/scripts/libmakepkg/source/git.sh.in
++++ b/scripts/libmakepkg/source/git.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   git.sh - function for handling the download and "extraction" of Git sources
+ #
+diff --git a/scripts/libmakepkg/source/hg.sh.in b/scripts/libmakepkg/source/hg.sh.in
+index 2889d4dd..ce005842 100644
+--- a/scripts/libmakepkg/source/hg.sh.in
++++ b/scripts/libmakepkg/source/hg.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   hg.sh - function for handling the download and "extraction" of Mercurial sources
+ #
+diff --git a/scripts/libmakepkg/source/local.sh.in b/scripts/libmakepkg/source/local.sh.in
+index 375973f9..0fe9de0e 100644
+--- a/scripts/libmakepkg/source/local.sh.in
++++ b/scripts/libmakepkg/source/local.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   local.sh - function for handling the "download" of local sources
+ #
+diff --git a/scripts/libmakepkg/source/svn.sh.in b/scripts/libmakepkg/source/svn.sh.in
+index f129a582..71913c1c 100644
+--- a/scripts/libmakepkg/source/svn.sh.in
++++ b/scripts/libmakepkg/source/svn.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   svn.sh - function for handling the download and "extraction" of Subversion sources
+ #
+diff --git a/scripts/libmakepkg/srcinfo.sh.in b/scripts/libmakepkg/srcinfo.sh.in
+index d342f1d4..707e1ba2 100644
+--- a/scripts/libmakepkg/srcinfo.sh.in
++++ b/scripts/libmakepkg/srcinfo.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   srcinfo.sh - functions for writing .SRCINFO files
+ #
+diff --git a/scripts/libmakepkg/tidy.sh.in b/scripts/libmakepkg/tidy.sh.in
+index e77ea547..711d919f 100644
+--- a/scripts/libmakepkg/tidy.sh.in
++++ b/scripts/libmakepkg/tidy.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   tidy.sh - functions for modifying/removing installed files before
+ #   package creation
+diff --git a/scripts/libmakepkg/tidy/docs.sh.in b/scripts/libmakepkg/tidy/docs.sh.in
+index b29aaec1..4a72010b 100644
+--- a/scripts/libmakepkg/tidy/docs.sh.in
++++ b/scripts/libmakepkg/tidy/docs.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   docs.sh - Remove documentation files from the package
+ #
+diff --git a/scripts/libmakepkg/tidy/emptydirs.sh.in b/scripts/libmakepkg/tidy/emptydirs.sh.in
+index fc4999b8..7b24269f 100644
+--- a/scripts/libmakepkg/tidy/emptydirs.sh.in
++++ b/scripts/libmakepkg/tidy/emptydirs.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   emptydirs.sh - Remove empty directories from the package
+ #
+diff --git a/scripts/libmakepkg/tidy/libtool.sh.in b/scripts/libmakepkg/tidy/libtool.sh.in
+index 4e3babdc..9bb8538a 100644
+--- a/scripts/libmakepkg/tidy/libtool.sh.in
++++ b/scripts/libmakepkg/tidy/libtool.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   libtool.sh - Remove libtool files from the package
+ #
+diff --git a/scripts/libmakepkg/tidy/purge.sh.in b/scripts/libmakepkg/tidy/purge.sh.in
+index 58a36669..7da8f3e4 100644
+--- a/scripts/libmakepkg/tidy/purge.sh.in
++++ b/scripts/libmakepkg/tidy/purge.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   purge.sh - Remove unwanted files from the package
+ #
+diff --git a/scripts/libmakepkg/tidy/staticlibs.sh.in b/scripts/libmakepkg/tidy/staticlibs.sh.in
+index 7dda70bb..d2745979 100644
+--- a/scripts/libmakepkg/tidy/staticlibs.sh.in
++++ b/scripts/libmakepkg/tidy/staticlibs.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   staticlibs.sh - Remove static library files from the package
+ #
+diff --git a/scripts/libmakepkg/tidy/strip.sh.in b/scripts/libmakepkg/tidy/strip.sh.in
+index 035a2142..f37f87cc 100644
+--- a/scripts/libmakepkg/tidy/strip.sh.in
++++ b/scripts/libmakepkg/tidy/strip.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   strip.sh - Strip debugging symbols from binary files
+ #
+diff --git a/scripts/libmakepkg/tidy/zipman.sh.in b/scripts/libmakepkg/tidy/zipman.sh.in
+index d089a709..d8bf11eb 100644
+--- a/scripts/libmakepkg/tidy/zipman.sh.in
++++ b/scripts/libmakepkg/tidy/zipman.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   zipman.sh - Compress man and info pages
+ #
+diff --git a/scripts/libmakepkg/util.sh.in b/scripts/libmakepkg/util.sh.in
+index d2706a2d..4fdca9ef 100644
+--- a/scripts/libmakepkg/util.sh.in
++++ b/scripts/libmakepkg/util.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   util.sh - utility functions for makepkg
+ #
+diff --git a/scripts/libmakepkg/util/compress.sh.in b/scripts/libmakepkg/util/compress.sh.in
+index 4f657afa..1d675fa0 100644
+--- a/scripts/libmakepkg/util/compress.sh.in
++++ b/scripts/libmakepkg/util/compress.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   compress.sh - functions to compress archives in a uniform manner
+ #
+diff --git a/scripts/libmakepkg/util/config.sh.in b/scripts/libmakepkg/util/config.sh.in
+index 2045fa9e..84f4ef2e 100644
+--- a/scripts/libmakepkg/util/config.sh.in
++++ b/scripts/libmakepkg/util/config.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   config.sh - functions for handling makepkg config files
+ #
+diff --git a/scripts/libmakepkg/util/dirsize.sh.in b/scripts/libmakepkg/util/dirsize.sh.in
+index c67484f6..59d6cf48 100644
+--- a/scripts/libmakepkg/util/dirsize.sh.in
++++ b/scripts/libmakepkg/util/dirsize.sh.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   dirsize.sh - calculate size of all files in a directory
+ #
+diff --git a/scripts/libmakepkg/util/error.sh.in b/scripts/libmakepkg/util/error.sh.in
+index 576b18e8..0c531ce8 100644
+--- a/scripts/libmakepkg/util/error.sh.in
++++ b/scripts/libmakepkg/util/error.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   error.sh.in - error variable definitions for makepkg
+ #
+diff --git a/scripts/libmakepkg/util/message.sh.in b/scripts/libmakepkg/util/message.sh.in
+index 3fdc8161..b2d2fced 100644
+--- a/scripts/libmakepkg/util/message.sh.in
++++ b/scripts/libmakepkg/util/message.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   message.sh - functions for outputting messages in makepkg
+ #
+diff --git a/scripts/libmakepkg/util/option.sh.in b/scripts/libmakepkg/util/option.sh.in
+index 9ee9fc67..9e9ccd16 100644
+--- a/scripts/libmakepkg/util/option.sh.in
++++ b/scripts/libmakepkg/util/option.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   option.sh - functions to test if build/packaging options are enabled
+ #
+diff --git a/scripts/libmakepkg/util/parseopts.sh.in b/scripts/libmakepkg/util/parseopts.sh.in
+index 12b70e39..20ae2ea4 100644
+--- a/scripts/libmakepkg/util/parseopts.sh.in
++++ b/scripts/libmakepkg/util/parseopts.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   parseopts.sh - getopt_long-like parser
+ #
+diff --git a/scripts/libmakepkg/util/pkgbuild.sh.in b/scripts/libmakepkg/util/pkgbuild.sh.in
+index a6615d92..ac0ee10f 100644
+--- a/scripts/libmakepkg/util/pkgbuild.sh.in
++++ b/scripts/libmakepkg/util/pkgbuild.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   pkgbuild.sh - functions to extract information from PKGBUILD files
+ #
+diff --git a/scripts/libmakepkg/util/schema.sh.in b/scripts/libmakepkg/util/schema.sh.in
+index 645ca3bc..09ecf10e 100644
+--- a/scripts/libmakepkg/util/schema.sh.in
++++ b/scripts/libmakepkg/util/schema.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   schema.sh - declare specific groups of pkgbuild variables
+ #
+diff --git a/scripts/libmakepkg/util/source.sh.in b/scripts/libmakepkg/util/source.sh.in
+index ce5cd296..2707ab62 100644
+--- a/scripts/libmakepkg/util/source.sh.in
++++ b/scripts/libmakepkg/util/source.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   source.sh - functions to extract information from source URLs
+ #
+diff --git a/scripts/libmakepkg/util/util.sh.in b/scripts/libmakepkg/util/util.sh.in
+index 6c0e589a..a481689a 100644
+--- a/scripts/libmakepkg/util/util.sh.in
++++ b/scripts/libmakepkg/util/util.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   util.sh - general utility functions
+ #
+diff --git a/scripts/makepkg-template.pl.in b/scripts/makepkg-template.pl.in
+index bb14f85f..0601b24d 100755
+--- a/scripts/makepkg-template.pl.in
++++ b/scripts/makepkg-template.pl.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/perl
++#!/data/usr/bin/perl
+ #   makepkg-template - template system for makepkg
+ #
+ #   Copyright (c) 2013-2022 Pacman Development Team <pacman-dev@lists.archlinux.org>
+diff --git a/scripts/makepkg.sh.in b/scripts/makepkg.sh.in
+index 188153b6..79cc210e 100644
+--- a/scripts/makepkg.sh.in
++++ b/scripts/makepkg.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/usr/bin/bash
+ #
+ #   makepkg - make packages compatible for use with pacman
+ #
+diff --git a/scripts/pacman-db-upgrade.sh.in b/scripts/pacman-db-upgrade.sh.in
+index fa504878..1fbba529 100644
+--- a/scripts/pacman-db-upgrade.sh.in
++++ b/scripts/pacman-db-upgrade.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash -e
++#!/data/bin/bash -e
+ #
+ #   pacman-db-upgrade - upgrade the local pacman db to a newer format
+ #
+diff --git a/scripts/pacman-key.sh.in b/scripts/pacman-key.sh.in
+index 3754e716..07aa822b 100644
+--- a/scripts/pacman-key.sh.in
++++ b/scripts/pacman-key.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/bin/bash
+ #
+ #   pacman-key - manages pacman's keyring
+ #                Based on apt-key, from Debian
+diff --git a/scripts/repo-add.sh.in b/scripts/repo-add.sh.in
+index 5e51a4c5..7c91942e 100644
+--- a/scripts/repo-add.sh.in
++++ b/scripts/repo-add.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/bin/bash
+ #
+ #   repo-add - add a package to a given repo database file
+ #   repo-remove - remove a package entry from a given repo database file
+diff --git a/scripts/wrapper.sh.in b/scripts/wrapper.sh.in
+index a914498e..05f9b865 100644
+--- a/scripts/wrapper.sh.in
++++ b/scripts/wrapper.sh.in
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/data/bin/bash
+ #
+ #   @PROGNAME@ - a wrapper for running the real @PROGNAME@ in the source tree
+ #
+-- 
+2.41.0
+

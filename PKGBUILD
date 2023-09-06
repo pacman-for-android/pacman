@@ -4,9 +4,9 @@
 
 pkgname=pacman
 pkgver=6.0.2
-pkgrel=7
+pkgrel=7.2
 pkgdesc="A library-based package manager with dependency support"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.archlinux.org/pacman/"
 license=('GPL')
 depends=('bash' 'glibc' 'libarchive' 'curl' 'gpgme' 'pacman-mirrorlist'
@@ -15,29 +15,25 @@ makedepends=('meson' 'asciidoc' 'doxygen')
 checkdepends=('python' 'fakechroot')
 optdepends=('perl-locale-gettext: translation support in makepkg-template')
 provides=('libalpm.so')
-backup=(etc/pacman.conf
-        etc/makepkg.conf)
+backup=(data/etc/pacman.conf
+        data/etc/makepkg.conf)
 options=('strip')
 validpgpkeys=('6645B0A8C7005E78DB1D7864F99FFE0FEAE999BD'  # Allan McRae <allan@archlinux.org>
               'B8151B117037781095514CA7BBDFFC92306B1121') # Andrew Gregory (pacman) <andrew@archlinux.org>
-source=(https://sources.archlinux.org/other/pacman/$pkgname-$pkgver.tar.xz{,.sig}
-        pacman-always-create-directories-from-debugedit.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/efd0c24c07b86be014a4edb5a8ece021b87e3900.patch
-        pacman-always-create-directories-from-debugedit-fixup.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/86981383a2f4380bda26311831be94cdc743649b.patch
-        pacman-fix-unique-source-paths.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/478af273dfe24ded197ec54ae977ddc3719d74a0.patch
-        pacman-strip-include-o-files-similar-to-kernel-modules.patch::https://gitlab.archlinux.org/pacman/pacman/-/commit/de11824527ec4e2561e161ac40a5714ec943543c.patch
+source=(git+https://gitlab.archlinux.org/pacman/pacman#commit=2c45e854ab405101fc13f6bd553a0ce099ecab6f
         pacman.conf
-        makepkg.conf)
-sha256sums=('7d8e3e8c5121aec0965df71f59bedf46052c6cf14f96365c4411ec3de0a4c1a5'
-            'SKIP'
-            '6fed94326b9ecfbb438ab17a4576b5e9d52ecc0f4574f29d46adfde3886dee03'
-            'd2bc104788290e3de829a232590b66ad745cf5b4762a01acc1191ebf70fef114'
-            'f3d4f39ef24e312f610cbb3439fb02bc6b8829e37bcf1a50ae50cd0a69bde5d0'
-            'd87d0c9957c613fda272553bee58140349d151ae399f346ddaf6d75ee5916312'
-            '656c4d4cb8cb12adbf178fc8cb2fd25f8c285d6572bbdbb24d865d00e0d5a85a'
-            '072020e34f2c55b94a9a486829a7eadab0a830ddb4d8e759b0c4e6cf1bde73a6')
+        makepkg.conf
+        "0001-change-prefix.patch" "0001-no-etc-mtab.patch" "0001-makepkg-fixes.patch" "0001-use-data-local-tmp-instead-of-tmp.patch")
+sha256sums=('SKIP'
+            '95a7a6c69387199f283cd00ee71238574b2c1c9e3dc83871c261e4003d323797'
+            '74cbbdd0adcde4b5b329081c4a6ca84b0bf553b64f779840e143e470551dbaf7'
+            'fee7049a985c10f5c88c45bd2d9825b58cac4e3c270ebe6425f890c4d71dabaa'
+            '61bd63e9766b87b2325cc833768843f98e672bde6d65621f60b278573eda8c98'
+            '58914ca88f533898267f4b1997a41cabd40d75efa654c3ad3034a3f30639a39f'
+            'a9e3639bb143ea70852498ed6d501d90bf05a46d6689fcaefb52c4b38d273060')
 
 prepare() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}"
   # we backport way too often in pacman
   # lets at least make it more convenient
   local src
@@ -48,35 +44,40 @@ prepare() {
     msg2 "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  sed -i '1s|.*|#!/data/usr/bin/sh|' build-aux/{update-copyright,meson-make-symlink.sh}
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
-  meson --prefix=/usr \
+  meson --prefix=/data/usr \
         --buildtype=plain \
         -Ddoc=enabled \
         -Ddoxygen=enabled \
-        -Dscriptlet-shell=/usr/bin/bash \
-        -Dldconfig=/usr/bin/ldconfig \
+        -Dscriptlet-shell=/data/usr/bin/bash \
+        -Dldconfig=/data/usr/bin/ldconfig \
+        -Droot-dir=/ \
+        -Dsysconfdir=/data/etc \
+        -Dlocalstatedir=/data/var \
         build
 
   meson compile -C build
 }
 
 check() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   meson test -C build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   DESTDIR="$pkgdir" meson install -C build
 
   # install Arch specific stuff
-  install -dm755 "$pkgdir/etc"
-  install -m644 "$srcdir/pacman.conf" "$pkgdir/etc"
-  install -m644 "$srcdir/makepkg.conf" "$pkgdir/etc"
+  install -Ddm755 "$pkgdir/data/etc"
+  install -m644 "$srcdir/pacman.conf" "$pkgdir/data/etc"
+  install -m644 "$srcdir/makepkg.conf" "$pkgdir/data/etc"
 }
