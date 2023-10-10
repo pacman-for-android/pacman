@@ -1,7 +1,7 @@
-From 2dda63bb61c90cd8c2266ca8934ff97b983e44bb Mon Sep 17 00:00:00 2001
+From 37bbf2b272d0fd4255ac12af09c2663b0045a3fa Mon Sep 17 00:00:00 2001
 From: kxxt <rsworktech@outlook.com>
 Date: Mon, 21 Aug 2023 21:25:04 +0800
-Subject: [PATCH] makepkg fixes
+Subject: [PATCH 3/4] makepkg fixes
 
 ---
  etc/makepkg.conf.in   | 22 +++++++++++-----------
@@ -53,7 +53,7 @@ index 857a5dd6..7935f574 100644
  #########################################################################
  # PACKAGE OUTPUT
 diff --git a/scripts/makepkg.sh.in b/scripts/makepkg.sh.in
-index 79cc210e..d6d97b64 100644
+index 9a778cbc..99151cd3 100644
 --- a/scripts/makepkg.sh.in
 +++ b/scripts/makepkg.sh.in
 @@ -616,7 +616,7 @@ create_package() {
@@ -66,5 +66,5 @@ index 79cc210e..d6d97b64 100644
  
  	shopt -u -o pipefail
 -- 
-2.41.0
+2.42.0
 

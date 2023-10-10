@@ -1,7 +1,7 @@
-From 0fffca4cca437cb65b6dc8b7f05409c59e01b329 Mon Sep 17 00:00:00 2001
+From 1ad6599b9db43a4a1eee7f55f97abb67f0ed9194 Mon Sep 17 00:00:00 2001
 From: kxxt <rsworktech@outlook.com>
 Date: Tue, 22 Aug 2023 09:29:50 +0800
-Subject: [PATCH] use /data/local/tmp instead of /tmp
+Subject: [PATCH 4/4] use /data/local/tmp instead of /tmp
 
 ---
  lib/libalpm/trans.c | 6 +++---
@@ -29,5 +29,5 @@ index 7048a059..ca6f887f 100644
  		_alpm_log(handle, ALPM_LOG_ERROR, _("could not create temp directory\n"));
  		free(tmpdir);
 -- 
-2.41.0
+2.42.0
 
